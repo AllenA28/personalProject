@@ -15,9 +15,9 @@ const Carousel = () => {
     }
     
     return (
-        <div className="relative w-[90%] mx-auto mt-5 text-gray-300">
+        <div className="relative w-[90%] mx-auto mt-5 text-gray-300 ">
             <Slider {...settings} className = '' >
-            <div className="pt-4 pl-4 bg-white/10 rounded-xl shadow-lg backdrop-blur-md opacity-90 h-[290px]">
+            <div className="pt-4 pl-4 bg-white/10  shadow-lg backdrop-blur-md opacity-90 h-[290px]">
                 <h2 className="text-cyan-700 text-2xl font-bold mb-4">Coding Languages</h2>
                 <ul className = 'text-lg ml-14 '>
                     <li className = 'group'>
@@ -48,7 +48,7 @@ const Carousel = () => {
                     </li>  
                 </ul>
             </div>
-            <div className="pt-4 pl-4 bg-white/10 rounded-xl shadow-lg backdrop-blur-md opacity-90 h-[290px]">
+            <div className="pt-4 pl-4 bg-white/10  shadow-lg backdrop-blur-md opacity-90 h-[290px]">
                 <h2 className="text-cyan-700 text-3xl font-bold mb-4">Frameworks</h2>
                 <ul className = 'text-lg ml-14 '>
                     <li className = 'group'>
@@ -71,7 +71,7 @@ const Carousel = () => {
  
                 </ul> 
             </div>
-            <div className="pt-4 pl-4 bg-white/10 rounded-xl shadow-lg backdrop-blur-md opacity-90 h-[290px]">
+            <div className="pt-4 pl-4 bg-white/10  shadow-lg backdrop-blur-md opacity-90 h-[290px]">
                 <h2 className="text-cyan-700 text-3xl font-bold mb-4">Musician</h2>
                 <p className="text-gray-300 text-sm">
                     Ever since I was a little kid I've enjoyed making music. The instrument that I love playing the most would be guitar, which I really got 
@@ -81,7 +81,7 @@ const Carousel = () => {
                 </p>
 
             </div>
-            <div className="pt-4 pl-4 bg-white/10 rounded-xl shadow-lg backdrop-blur-md opacity-90 h-[290px] w-[20px]">
+            <div className="pt-4 pl-4 bg-white/10  shadow-lg backdrop-blur-md opacity-90 h-[290px] w-[20px]">
                 <h2 className="text-cyan-700 text-3xl font-bold mb-4">Sports Lover</h2>
                 <p className="text-gray-300 text-sm">
                     I've been playing sports since I discovered the basketball back in elementary school. I love to play team sports because it gives me an 

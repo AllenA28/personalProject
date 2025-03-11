@@ -11,7 +11,7 @@ const NavLinks = ({ hamburger }) => {
                         <Link
                             to={`/${link}`} 
 
-                            className="block py-2 px-3 text-cyan-400 hover:text-cyan-200 
+                            className="block py-2 px-3 text-cyan-400 hover:text-yellow-400 
                                      hover:bg-cyan-900/20 rounded-lg transition-all
                                        duration-300 group"
                         >
