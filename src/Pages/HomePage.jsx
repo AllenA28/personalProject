@@ -1,4 +1,4 @@
-import SceneTest from '../components/sceneTest'
+import SceneTest from '../components/SceneTest'
 
 
 const HomePage = () => {
