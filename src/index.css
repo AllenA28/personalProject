@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Make sure body also takes up the full height */
+  overflow: hidden; /* If overflow-hidden on the parent doesn't work */
+}
