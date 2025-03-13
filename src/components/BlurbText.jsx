@@ -1,11 +1,25 @@
 
 
 import {  Text3D} from '@react-three/drei'
+import { useFrame } from '@react-three/fiber';
+import {useState} from 'react';
 
 
-const BlurbText = ({z = -90}) => {
+const BlurbText = ({z = -90, visible}) => {
+  const [opacity, setOpacity] = useState(0);
+  //console.log(visible)
+  useFrame(() => {
+    if (visible && opacity < 1) {
+      setOpacity(Math.min(opacity + 0.01, 1));
+    } else if (!visible && opacity > 0) {
+      setOpacity(Math.max(opacity - 0.01, 0));
+    }
+  });
+
+  
   return (
     <>
+      
       <Text3D
         font="/fonts/helvetiker_regular.typeface.json"
         size={1.5}
@@ -24,6 +38,8 @@ const BlurbText = ({z = -90}) => {
           metalness={0.7} 
           roughness={0.2} 
           envMapIntensity={0.5}
+          opacity = {opacity}
+          transparent = {true}
         />
       </Text3D>
         <Text3D
@@ -44,6 +60,8 @@ const BlurbText = ({z = -90}) => {
           metalness={0.7} 
           roughness={0.2} 
           envMapIntensity={0.5}
+          opacity = {opacity}
+          transparent = {true}
         />
       </Text3D>
       <Text3D
@@ -64,6 +82,8 @@ const BlurbText = ({z = -90}) => {
           metalness={0.7} 
           roughness={0.2} 
           envMapIntensity={0.5}
+          opacity = {opacity}
+          transparent = {true}
         />
       </Text3D>
       <Text3D
@@ -84,6 +104,8 @@ const BlurbText = ({z = -90}) => {
           metalness={0.7} 
           roughness={0.2} 
           envMapIntensity={0.5}
+          opacity = {opacity}
+          transparent = {true}
         />
       </Text3D>
       <Text3D
@@ -104,8 +126,11 @@ const BlurbText = ({z = -90}) => {
           metalness={0.7} 
           roughness={0.2} 
           envMapIntensity={0.5}
+          opacity = {opacity}
+          transparent = {true}
         />
       </Text3D>
+      
     </>
   )
 }

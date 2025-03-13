@@ -23,7 +23,7 @@ const NameText = ({z = 0}) => {
           color="cyan" 
           metalness={0.7} 
           roughness={0.2} 
-          envMapIntensity={0.5}
+          envMapIntensity={1.5}
         />
       </Text3D>
         <Text3D

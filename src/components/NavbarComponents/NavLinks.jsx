@@ -18,7 +18,7 @@ const NavLinks = ({ hamburger }) => {
 
                             {link}
 
-                            {!hamburger ? <div className="h-0.5 bg-cyan-400/0 group-hover:bg-cyan-300/30 mt-1 transition-all" /> : <></>}
+                            {!hamburger ? <div className="h-0.5 bg-cyan-400/0 group-hover:bg-cyan-300/30 mt-1 z-12 transition-all" /> : <></>}
                         </Link>
                     {/* </div> */}
                 </li>

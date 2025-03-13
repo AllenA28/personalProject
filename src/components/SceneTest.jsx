@@ -9,14 +9,15 @@ import { useState, useRef } from "react";
 import { Vector3 } from "three";
 
 // Component for handling camera zoom animation
-const CameraZoom = ({ controlsRef }) => {
+const CameraZoom = ({ controlsRef, setVisibility }) => {
   const [zoomState, setZoomState] = useState(0); // Tracks zoom progression (0: first layer, 1: second layer)
-
+  
   useFrame(({ camera }) => {
     let zoomInSpeed = 0.2;
     const zoomSpeed = 2; // Constant zoom speed
     const secondText = -120
     if (zoomState === 0) {
+      setVisibility(false) // failsafe
       // Zoom into the first layer (target slightly in front)
       if (camera.position.z > 30) {
         camera.position.z -= zoomInSpeed; // Move closer at a constant speed
@@ -26,6 +27,10 @@ const CameraZoom = ({ controlsRef }) => {
       }
     } else if (zoomState === 1) {
       // Zoom into the second layer (target slightly in front)
+      if (camera.position.z < 10){
+        setVisibility(true); //make second layer visible in second zoom state
+      } 
+      
       if(camera.position.z < secondText +50){
         zoomInSpeed = 0.1
       }
@@ -36,6 +41,9 @@ const CameraZoom = ({ controlsRef }) => {
         setZoomState(2); // Reset zoom state when close enough
       }
     } else if (zoomState === 2) {
+
+        setVisibility(false) // hide second layer when zoomed out enough
+
       zoomInSpeed = 0.2
       // Reset to initial position quickly
       if (camera.position.z < 50) {
@@ -48,13 +56,12 @@ const CameraZoom = ({ controlsRef }) => {
 
     controlsRef.current.update(); // Update OrbitControls
   });
-
   return null; // This component doesn't render anything visually
 };
 
 const SceneTest = () => {
+  const [visibility, setVisibility] = useState(false); // changing the opacity of the second set of words
   const controlsRef = useRef(); // Reference to OrbitControls
-
   return (
     <Canvas camera={{ position: [0, 0, 60], fov: 55 }} style={{ height: "100vh", width: "100%", pointerEvents: 'none' } }>
       {/* Lights */}
@@ -66,14 +73,15 @@ const SceneTest = () => {
       <OrbitControls ref={controlsRef} enableZoom={false} />
 
       {/* Camera Zoom Logic */}
-      <CameraZoom controlsRef={controlsRef} />
+      <CameraZoom controlsRef={controlsRef} setVisibility = {setVisibility} />
 
       {/* Scene Elements */}
       <Comets />
       <Sparkles count={100} scale={[20, 15, 10]} size={7} speed={0.5} color="cyan" />
       <NameText />
-      <Sparkles count={100} scale={[30, 15, 10]} size={10} speed={0.5} color="cyan" position = {[0,0,-120]}/>
-      <BlurbText z={-120}/>
+      <Sparkles count={100} scale={[35, 15, 10]} size={15} speed={0.5} color="cyan" position = {[0,0,-120]}/>
+      {/* {opaque ? <BlurbText z={-120} />: null} */}
+      <BlurbText z= {-120} visible={visibility} />
       <SpaceBackground />
     </Canvas>
   );
